@@ -41,11 +41,6 @@ func (t *MicroTime) DeepCopyInto(out *MicroTime) {
 	*out = *t
 }
 
-// String returns the representation of the time.
-func (t MicroTime) String() string {
-	return t.Time.String()
-}
-
 // NewMicroTime returns a wrapped instance of the provided time
 func NewMicroTime(time time.Time) MicroTime {
 	return MicroTime{time}
@@ -60,34 +55,6 @@ func DateMicro(year int, month time.Month, day, hour, min, sec, nsec int, loc *t
 // NowMicro returns the current local time.
 func NowMicro() MicroTime {
 	return MicroTime{time.Now()}
-}
-
-// IsZero returns true if the value is nil or time is zero.
-func (t *MicroTime) IsZero() bool {
-	if t == nil {
-		return true
-	}
-	return t.Time.IsZero()
-}
-
-// Before reports whether the time instant t is before u.
-func (t *MicroTime) Before(u *MicroTime) bool {
-	return t.Time.Before(u.Time)
-}
-
-// Equal reports whether the time instant t is equal to u.
-func (t *MicroTime) Equal(u *MicroTime) bool {
-	return t.Time.Equal(u.Time)
-}
-
-// BeforeTime reports whether the time instant t is before second-lever precision u.
-func (t *MicroTime) BeforeTime(u *Time) bool {
-	return t.Time.Before(u.Time)
-}
-
-// EqualTime reports whether the time instant t is equal to second-lever precision u.
-func (t *MicroTime) EqualTime(u *Time) bool {
-	return t.Time.Equal(u.Time)
 }
 
 // UnixMicro returns the local time corresponding to the given Unix time
